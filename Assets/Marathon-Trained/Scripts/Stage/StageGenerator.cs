@@ -31,8 +31,6 @@ public class StageGenerator : MonoBehaviour
     [SerializeField] private float stageGenerateMin = 0.1f;
     [SerializeField] private float stageGenerateMax = 1f;
 
-    public bool GenerateFlatStage;
-
     public void Initialize(Vector3 playerPosition) {
         _spawnPosition = new Vector3(
             playerPosition.x + 5,

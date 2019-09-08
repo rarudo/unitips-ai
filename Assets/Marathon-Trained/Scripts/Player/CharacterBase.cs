@@ -53,7 +53,6 @@ public class CharacterBase : MonoBehaviour
 
     public void Spawn()
     {
-        // イベントのループを避けるため，1フレーム待ってからリボーンする
         transform.position = _initPos;
         Rigidbody.velocity = Vector3.zero;
     }
