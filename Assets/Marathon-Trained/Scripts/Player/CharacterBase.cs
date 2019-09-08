@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterBase : MonoBehaviour
@@ -12,19 +11,30 @@ public class CharacterBase : MonoBehaviour
 
     [SerializeField]
     private float jumpForce = 0.0f;
+    
+    [SerializeField]
+    private DeathDetector _deathDetector;
 
     protected int jumpCount = 0;
+    
+    // リスポーン用に初期ポジションを保存しておく
+    private Vector3 _initialPosition;
+    
 
-    private Vector3 _initPos;
+    public bool IsDead {
+        get => _deathDetector.IsDead;
+    }
+    
 
     private void Awake()
     {
-        _initPos = this.gameObject.transform.position;
+        _initialPosition = transform.position;
         OnAwake();
     }
-
-    protected virtual void OnAwake() {}
-
+    
+    protected virtual void OnAwake() {
+    }
+    
     private void Start()
     {
         // 地面に接地した時にジャンプの回数をリセットする
@@ -37,7 +47,22 @@ public class CharacterBase : MonoBehaviour
         OnStart();
     }
     
+
+
+    
+
     protected virtual void OnStart() {}
+
+    public IEnumerator Reborn() {
+        // イベントのループを避けるため，1フレーム待ってからリボーンする
+        yield return null;
+
+        gameObject.SetActive(true);
+
+        _deathDetector.Revive();
+        transform.position = _initialPosition;
+        Rigidbody.velocity = Vector3.zero;
+    }
 
     public void Jump()
     {
@@ -49,11 +74,5 @@ public class CharacterBase : MonoBehaviour
             Rigidbody.velocity = Vector3.zero;
             Rigidbody.AddForce(new Vector3(0, jumpForce, 0), ForceMode2D.Impulse);
         }
-    }
-
-    public void Spawn()
-    {
-        transform.position = _initPos;
-        Rigidbody.velocity = Vector3.zero;
     }
 }

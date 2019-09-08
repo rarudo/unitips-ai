@@ -199,7 +199,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5d0aa77948db04c7c8cc42edfff79d39, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -614,6 +614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundDetector: {fileID: 8703616478977815859}
   jumpForce: 15
+  _deathDetector: {fileID: 8703616478392656311}
   rayDetectors:
   - {fileID: 8703616478799367646}
   - {fileID: 8703616477653389516}
@@ -629,7 +630,6 @@ MonoBehaviour:
   - {fileID: 8703616477232480789}
   - {fileID: 8703616479224542853}
   - {fileID: 8703616478520232350}
-  DeathDetector: {fileID: 8703616478392656311}
 --- !u!114 &8703616478392656311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -817,7 +817,6 @@ MonoBehaviour:
   scaleYmax: 3
   stageGenerateMin: 0.3
   stageGenerateMax: 2.5
-  GenerateFlatStage: 0
 --- !u!1 &8703616478675908934
 GameObject:
   m_ObjectHideFlags: 0
@@ -1177,7 +1176,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5d0aa77948db04c7c8cc42edfff79d39, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

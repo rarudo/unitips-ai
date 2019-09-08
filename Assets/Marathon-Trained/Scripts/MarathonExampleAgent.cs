@@ -36,7 +36,7 @@ public class MarathonExampleAgent : Agent {
              character.Jump();
          }
  
-         if (character.DeathDetector.IsDead) {
+         if (character.IsDead) {
              AddReward(-1f);
              Done();
          } else {
